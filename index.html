@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Dapp</title>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"
+      type="application/javascript"
+    ></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+    <div>
+        <h1>Note Dapp</h1>
+        <p>This is example dApp</p>
+        <label for="note">Enter note:</label>
+        <input placeholder="your note" type="text" id = "input_note"/>
+        <button onclick="setNote()">Submit</button>
+        <button onclick="getNote()">Get note</button>
+        <p>current note: <span id ="span_result"></span></p>
+
+    </div>  
+</body>
+</html>
