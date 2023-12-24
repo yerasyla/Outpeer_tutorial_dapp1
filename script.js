@@ -54,7 +54,7 @@ provider.send("eth_requestAccounts", []).then(()=>{
 })
 
 async function play(){
-    const note = document.getElementById("input_note").value;
+    const note = document.getElementById("input").value;
     const play = await contract.play(note, { value: ethers.utils.parseUnits("0.001", "ether") });
     console.log(play)
     document.getElementById("span_result").innerText = await contract.callStatic.play(note, { value: ethers.utils.parseUnits("0.001", "ether") })
