@@ -1,30 +1,41 @@
-const contractAddress = "0xCE00c1be50397FA8b5ba25BA5851950DfB26909d"
+const contractAddress = "0x13352b642B7d3C5E2432c90Ba60d5076cD5C0bC7"
 
 const abi = [
 	{
-		"inputs": [],
-		"name": "getNote",
-		"outputs": [
+		"inputs": [
 			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "_option",
+				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
+		"name": "play",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "result",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"stateMutability": "payable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "fee",
+		"outputs": [
 			{
-				"internalType": "string",
-				"name": "_note",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
-		"name": "setNote",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]
@@ -42,14 +53,13 @@ provider.send("eth_requestAccounts", []).then(()=>{
     })
 })
 
-async function setNote(){
+async function play(){
     const note = document.getElementById("input_note").value;
-    const setNote = await contract.setNote(note);
+    const play = await contract.play(note, { value: ethers.utils.parseUnits("0.001", "ether") });
+    console.log(play)
+    document.getElementById("span_result").innerText = await contract.callStatic.play(note, { value: ethers.utils.parseUnits("0.001", "ether") })
+
 }
 
-async function getNote(){
-    const note = await contract.getNote();
-    console.log(note)
-    document.getElementById("span_result").innerText = note;
-}
+
 
