@@ -53,17 +53,13 @@ provider.send("eth_requestAccounts", []).then(()=>{
     })
 })
 
-async function setNote(){
+async function play(){
     const note = document.getElementById("input_note").value;
-    const setNote = await contract.play(note, { value: ethers.utils.parseUnits("0.001", "ether") });
-    console.log(setNote)
+    const play = await contract.play(note, { value: ethers.utils.parseUnits("0.001", "ether") });
+    console.log(play)
     document.getElementById("span_result").innerText = await contract.callStatic.play(note, { value: ethers.utils.parseUnits("0.001", "ether") })
 
 }
 
-async function getNote(){
-    const note = await contract.getNote();
-    console.log(note)
-    document.getElementById("span_result").innerText = note;
-}
+
 
